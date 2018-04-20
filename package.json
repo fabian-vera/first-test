@@ -1,0 +1,35 @@
+{
+  "name": "player",
+  "version": "1.0.0",
+  "description": "asdf",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "react-hot-loader": "^4.1.0"
+  },
+  "scripts": {
+    "test": "test",
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabian-vera/first-test.git"
+  },
+  "author": "fvera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabian-vera/first-test/issues"
+  },
+  "homepage": "https://github.com/fabian-vera/first-test#readme"
+}
