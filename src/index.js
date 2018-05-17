@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Player from './Components/Player';
-import SongList from './Components/SongList';
-import Search from './Components/Search'
+import Player from './components/player';
+import SongList from './components/songList';
+import Search from './components/search';
+import './css/index.css';
 
 const title = 'My Minimal React Webpack Babel Setup';
 

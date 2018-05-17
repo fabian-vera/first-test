@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Search extends Component {
     render() {
         return (
-            <input type="text" name="Search" placeholder="Search a Song" />
+            <input type="text" name="search" placeholder="Search a Song" />
         );
     }
 }
