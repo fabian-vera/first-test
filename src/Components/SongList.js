@@ -9,7 +9,6 @@ var searchByUser = 'lofi hiphop';
 var finalURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&part=snippet,id&order=relevance&maxResults=${result}&q=${searchByUser}`
 
 class SearchYoutube extends Component {
-
   constructor(props){
     super(props);
 
@@ -36,12 +35,10 @@ clicked(){
 }
 
   render(){
-    var userSearch = this.props.userSearch;
-    console.log(this.state.resultyt);
-
+    const filterText = this.props.filterText;
+    console.log('SONGLIST' + filterText);
     return(
       <div>
-        <p>{this.props.variableTest}</p>
         <button onClick={this.clicked}>SEARCH</button>
           {
             this.state.resultyt.map((item, i) => {

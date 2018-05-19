@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import Player from './components/player';
-import SongList from './components/songList';
-import Search from './components/search';
+import AppContainer from './components/app';
 import './css/index.css';
 
 ReactDOM.render(
   <div>
-    <Search />
-    {<SongList />}
-    <Player />
+    <AppContainer />
   </div>,  
   document.getElementById('app')
 );

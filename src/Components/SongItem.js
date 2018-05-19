@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-class SongItem extends Component {
+class SongItem extends Component {    
+
     render() {
         return (
-            <li className="songItem">item</li>
+            <li className="songItem">Song ITEM</li>
         );
     }
 }
