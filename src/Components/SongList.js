@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import SongItem from './songItem';
+import Player from './player';
+import Search from './search';
 
 const API = 'AIzaSyBwLREGuwxqd-boo81CaFeqCqZAclbuK-M';
 const result = 5;
 var searchByUser = 'lofi hiphop';
-
 var finalURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&part=snippet,id&order=relevance&maxResults=${result}&q=${searchByUser}`
 
 class SearchYoutube extends Component {
@@ -35,10 +36,12 @@ clicked(){
 }
 
   render(){
+    var userSearch = this.props.userSearch;
     console.log(this.state.resultyt);
 
     return(
       <div>
+        <p>{this.props.variableTest}</p>
         <button onClick={this.clicked}>SEARCH</button>
           {
             this.state.resultyt.map((item, i) => {

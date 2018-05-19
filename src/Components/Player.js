@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import ReactAudioPlayer from 'react-audio-player';
 import SongInfo from './songInfo';
 import PlayerControls from './playerControls';
-import ReactAudioPlayer from 'react-audio-player';
+
 
 class Player extends Component {
 
@@ -23,11 +24,11 @@ class Player extends Component {
     }
 
     render() {
-        console.log(this.state.apimp.url);
+        //console.log(this.state.apimp.url);
         return (
             <div className="player">
                 <h3>Player</h3>
-                <ReactAudioPlayer id='song' src={this.state.apimp.url} autoPlay='true'  controls crossOrigin/>
+                {/*<ReactAudioPlayer id='song' src={this.state.apimp.url} autoPlay='false' controls crossOrigin/>*/}
                 <SongInfo />
                 <PlayerControls />
             </div>
