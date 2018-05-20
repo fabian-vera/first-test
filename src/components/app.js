@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Player from './player';
-import SongList from './songList';
 import Search from './search';
-
+import SongList from './songList';
+import Player from './player';
 
 class AppContainer extends Component {
     constructor(props) {
