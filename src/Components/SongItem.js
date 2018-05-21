@@ -7,7 +7,10 @@ class SongItem extends Component {
 
     render() {
         return (
-            <li className="songItem">Song ITEM - {this.props.filterText}</li>
+            <li className="songItem" datasrc={this.props.item.url}>
+                <img src={this.props.item.thumbnail} />
+                <strong>{this.props.item.title}</strong>
+            </li>
         );
     }
 }

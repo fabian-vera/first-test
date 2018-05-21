@@ -8,17 +8,23 @@ class songList extends Component {
     super(props);
   }
 
-
-  render(){
-    
-
-    return(
-      <div>
-          <span>SONGLIST - {this.props.filterText}</span>
-          <SongItem filterText={this.props.filterText}/>
-     </div>
+  render() {
+    let resultItems;
+    if(this.props.resultyt){
+      resultItems = this.props.resultyt.map(item => {
+        return (
+          <SongItem key={item.title} item={item} />
+        );
+      });
+    }
+    return (
+      <div className="songList">
+        {resultItems}
+      </div>
     );
   }
+
+  
 }
 
 export default songList;
