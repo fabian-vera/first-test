@@ -6,21 +6,37 @@ import PlayerControls from './playerControls';
 class Player extends Component {
 
     constructor(props) {
-        super(props);   
+        super(props);
+        this.state = {
+            apimp: ''
+        }
+
+        this.showAudioPlayer = this.showAudioPlayer.bind(this);
+    }
+
+    // Reproductor de MP3
+    componentWillMount() {
+        var urlToService = 'http://desamovil.cl:3001/mp3/?url=' + this.props.urlclickedyoutube;
+        fetch(urlToService)
+          .then((response) => {
+            return response.json()
+          })
+          .then((apimp) => {
+            this.setState({ apimp: apimp.url })
+          })
+    }
+
+    showAudioPlayer() {
+        if (this.state.apimp != '') {
+            return <audio src={this.state.apimp} controls autoPlay />
+        }
+        return ''
     }
 
     render() {
-        let urlItem;
-        if(this.props.apimp){
-            urlItem = this.props.apimp.map(song => {
-            return (
-                <audio key={song.url} src={song.url} controls />
-            );
-          });
-        }
         return (
         <div className="playerContainer">
-            {urlItem}
+            {this.showAudioPlayer()}
         </div>
         );
     }

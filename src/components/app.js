@@ -20,8 +20,7 @@ class AppContainer extends Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.clickedSearch = this.clickedSearch.bind(this);
       this.clickedSongItem = this.clickedSongItem.bind(this);
-      this.getToService = this.getToService.bind(this);
-
+      this.handleShowPlayer = this.handleShowPlayer.bind(this);
     }
 
     handleChange(event) {
@@ -51,47 +50,38 @@ class AppContainer extends Component {
             });
     }
 
-    clickedSongItem(event) {
+    clickedSongItem(event) {     
         this.setState({urlclickedyoutube: event.target.value});
-        getToService();
     }
 
-    // Reproductor de MP3
-    getToService() {
-        var urlToService = 'http://desamovil.cl:3001/mp3/?url=' + this.props.urlclickedyoutube;
-        fetch(urlToService)
-          .then((response) => {
-            return response.json()
-          })
-          .then((apimp) => {
-            this.setState({ apimp: apimp })
-          })
+    handleShowPlayer() {
+        if(this.state.urlclickedyoutube != '') {
+           return ( 
+           <Player
+            filterText={this.state.filterText}
+            resultyt={this.state.resultyt}
+            urlclickedyoutube={this.state.urlclickedyoutube}
+            />
+           );
+        }
+        return '';
     }
 
 
   render(){ 
     return (
         <div className="appContainer">
-            <Search 
-                filterText={this.state.filterText} 
-                handleChange={this.handleChange}
-                clickedSearch={this.clickedSearch}
-                apimp={this.state.apimp}
-            />
+            <div className="searchArea">
+                <h3>Filtertext {this.state.filterText}</h3>
+                <input type="text" value={this.state.filterText} onChange={this.handleChange} />
+                <button onClick={this.clickedSearch}>SEARCH</button>
+            </div>
             <SongList 
                 filterText={this.state.filterText}
                 resultyt={this.state.resultyt}
                 clickedSongItem={this.clickedSongItem}
-                urlclickedyoutube={this.state.urlclickedyoutube}
-                apimp={this.state.apimp}
             />
-            <Player
-                filterText={this.state.filterText}
-                resultyt={this.state.resultyt}
-                clickedSongItem={this.clickedSongItem}
-                urlclickedyoutube={this.state.urlclickedyoutube}
-                apimp={this.state.apimp}
-             />
+            {this.handleShowPlayer()}
         </div>
     );
   }

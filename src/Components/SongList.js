@@ -11,11 +11,10 @@ class songList extends Component {
   render() {
     let resultItems;
     if(this.props.resultyt){
-      resultItems = this.props.resultyt.map(item => {
+      resultItems = this.props.resultyt.map((item, i) => {
         return (
-          <SongItem key={item.title} item={item} 
+          <SongItem key={i} item={item} 
             clickedSongItem={this.props.clickedSongItem} 
-            urlClickedYoutube={this.props.urlClickedYoutube}
           />
         );
       });
