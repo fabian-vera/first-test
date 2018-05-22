@@ -7,10 +7,10 @@ class SongItem extends Component {
 
     render() {
         return (
-            <li className="songItem" datasrc={this.props.item.url}>
+            <button className="songItem" value={this.props.item.url} onClick={this.props.clickedSongItem} urlclickedyoutube={this.props.urlclickedyoutube}>
                 <img src={this.props.item.thumbnail} />
                 <strong>{this.props.item.title}</strong>
-            </li>
+            </button>
         );
     }
 }

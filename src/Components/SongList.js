@@ -13,7 +13,10 @@ class songList extends Component {
     if(this.props.resultyt){
       resultItems = this.props.resultyt.map(item => {
         return (
-          <SongItem key={item.title} item={item} />
+          <SongItem key={item.title} item={item} 
+            clickedSongItem={this.props.clickedSongItem} 
+            urlClickedYoutube={this.props.urlClickedYoutube}
+          />
         );
       });
     }

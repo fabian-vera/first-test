@@ -11,12 +11,17 @@ class AppContainer extends Component {
       super(props);
       this.state = {
         value: '',
-        resultyt: []
+        resultyt: [],
+        urlclickedyoutube: '',
+        apimp: []
       };
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.clickedSearch = this.clickedSearch.bind(this);
+      this.clickedSongItem = this.clickedSongItem.bind(this);
+      this.getToService = this.getToService.bind(this);
+
     }
 
     handleChange(event) {
@@ -28,6 +33,7 @@ class AppContainer extends Component {
         event.preventDefault();
     }
 
+    // Busqueda en Youtube
     clickedSearch(){
         var finalURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&part=snippet,id&order=relevance&maxResults=${result}&q=${this.state.filterText}`
         fetch(finalURL)
@@ -45,21 +51,47 @@ class AppContainer extends Component {
             });
     }
 
+    clickedSongItem(event) {
+        this.setState({urlclickedyoutube: event.target.value});
+        getToService();
+    }
+
+    // Reproductor de MP3
+    getToService() {
+        var urlToService = 'http://desamovil.cl:3001/mp3/?url=' + this.props.urlclickedyoutube;
+        fetch(urlToService)
+          .then((response) => {
+            return response.json()
+          })
+          .then((apimp) => {
+            this.setState({ apimp: apimp })
+          })
+    }
+
 
   render(){ 
-      console.log(this.state.resultyt);
     return (
         <div className="appContainer">
             <Search 
                 filterText={this.state.filterText} 
                 handleChange={this.handleChange}
                 clickedSearch={this.clickedSearch}
+                apimp={this.state.apimp}
             />
             <SongList 
                 filterText={this.state.filterText}
                 resultyt={this.state.resultyt}
+                clickedSongItem={this.clickedSongItem}
+                urlclickedyoutube={this.state.urlclickedyoutube}
+                apimp={this.state.apimp}
             />
-            <Player />
+            <Player
+                filterText={this.state.filterText}
+                resultyt={this.state.resultyt}
+                clickedSongItem={this.clickedSongItem}
+                urlclickedyoutube={this.state.urlclickedyoutube}
+                apimp={this.state.apimp}
+             />
         </div>
     );
   }
