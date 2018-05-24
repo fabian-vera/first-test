@@ -7,10 +7,19 @@ class SongItem extends Component {
 
     render() {
         return (
-            <button className="songItem" value={this.props.item.url} onClick={this.props.clickedSongItem}>
-                <img src={this.props.item.thumbnail} />
-                <strong>{this.props.item.title}</strong>
-            </button>
+            <li className="songItem">
+                <a
+                    onClick={this.props.clickedSongItem} 
+                    href={this.props.item.url}
+                    name={this.props.item.thumbnail}
+                    title={this.props.item.title} >
+                        <div className='row'>
+                            <div className='col-3'><img src={this.props.item.thumbnail} /></div>
+                            <div className='col-8'><span>{this.props.item.title}</span></div>
+                            <i class="fas fa-chevron-right icon-bg"></i>
+                        </div>
+                </a>
+            </li>
         );
     }
 }

@@ -20,9 +20,9 @@ class songList extends Component {
       });
     }
     return (
-      <div className="songList">
+      <ul className="songList">
         {resultItems}
-      </div>
+      </ul>
     );
   }
 

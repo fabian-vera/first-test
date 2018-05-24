@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AppContainer from './components/app';
-import './css/app.css';
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css'
+import './css/app.scss';
+
 
 ReactDOM.render(
   <div>
