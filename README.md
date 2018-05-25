@@ -1,4 +1,4 @@
-# first-test
+# ReactJS Music Player
 - create gitignore file
 
 React Project Setup, referencia: https://www.robinwieruch.de/minimal-react-webpack-babel-setup/
