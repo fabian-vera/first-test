@@ -25,6 +25,17 @@ class AppContainer extends Component {
     this.enterKey = this.enterKey.bind(this);
   }
 
+  componentWillMount() {
+    if (localStorage.getItem('resultyt')) {
+      this.setState({ resultyt: JSON.parse(localStorage.getItem('resultyt')) });
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    const cacheStorage = JSON.stringify(nextState.resultyt);
+    localStorage.setItem('resultyt', cacheStorage);
+  }
+
   // Busqueda en Youtube
   clickedSearch() {
     this.setState({ showloader: true });
@@ -77,7 +88,12 @@ class AppContainer extends Component {
         <header className="col-12">
           <h1>ReactJS Music Player</h1>
           <div className="searchArea">
-            <input onKeyPress={this.enterKey} type="text" id="search" placeholder="Search from Youtube..." />
+            <input
+              onKeyPress={this.enterKey}
+              type="text"
+              id="search"
+              placeholder="Search from Youtube..."
+            />
             <button onClick={this.clickedSearch}><i className="fas fa-search" /></button>
           </div>
         </header>
