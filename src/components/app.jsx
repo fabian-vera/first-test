@@ -1,5 +1,6 @@
 /* eslint-env browser */
 import React, { Component } from 'react';
+import axios from 'axios';
 import SongList from './songList';
 import Player from './player';
 import Loader from './loader';
@@ -29,10 +30,10 @@ class AppContainer extends Component {
     this.setState({ showloader: true });
     const filterText = document.getElementById('search').value;
     const finalURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&part=snippet,id&order=relevance&type=video&videoDuration=medium&maxResults=${result}&q=${filterText}`;
-    fetch(finalURL)
-      .then(response => response.json())
+    axios.get(finalURL)
       .then((responseJson) => {
-        const resultyt = responseJson.items.map(item => ({
+        const resultyt = responseJson.data.items.map(item => ({
+          id: item.id.videoId,
           title: item.snippet.title,
           thumbnail: item.snippet.thumbnails.high.url,
           url: `https://www.youtube.com/watch?v=${item.id.videoId}`,

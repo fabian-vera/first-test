@@ -1,6 +1,7 @@
 /* eslint-env browser */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import AudioPlayer from 'react-h5-audio-player';
 import SongInfo from './songInfo';
 import Loader from './loader';
@@ -30,10 +31,9 @@ class Player extends Component {
   fecthService(link) {
     this.setState({ showloader: true });
     const urlToService = `http://localhost:3001/mp3/?url=${link}`;
-    fetch(urlToService)
-      .then(response => response.json())
+    axios.get(urlToService)
       .then((apimp) => {
-        this.setState({ apimp: apimp.url, showloader: false });
+        this.setState({ apimp: apimp.data.url, showloader: false });
       });
   }
 

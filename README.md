@@ -25,4 +25,5 @@ React Project Setup, referencia: https://www.robinwieruch.de/minimal-react-webpa
 - Install eslint (Airbnb config)
 - Fix some issues and warnings fron lint
 - Make new files in JSX format.
+- Make Loader a separate component
 

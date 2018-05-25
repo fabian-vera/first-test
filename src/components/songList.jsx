@@ -9,7 +9,7 @@ class songList extends Component {
     if (this.props.resultyt) {
       resultItems = this.props.resultyt.map(item => (
         <SongItem
-          key={item.title}
+          key={item.id}
           item={item}
           clickedSongItem={this.props.clickedSongItem}
         />
