@@ -24,8 +24,8 @@ class songList extends Component {
 }
 
 songList.propTypes = {
-  clickedSongItem: PropTypes.func.isRequired,
-  resultyt: PropTypes.arrayOf.isRequired,
+  clickedSongItem: PropTypes.func, // eslint-disable-line react/forbid-prop-types
+  resultyt: PropTypes.array, // eslint-disable-line react/forbid-prop-types
 };
 
 export default songList;

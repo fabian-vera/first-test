@@ -25,11 +25,11 @@ class SongItem extends Component {
 }
 
 SongItem.propTypes = {
-  clickedSongItem: PropTypes.func.isRequired,
-  item: PropTypes.arrayOf.isRequired,
-  url: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  clickedSongItem: PropTypes.func, // eslint-disable-line react/forbid-prop-types
+  item: PropTypes.array, // eslint-disable-line react/forbid-prop-types
+  url: PropTypes.string, // eslint-disable-line react/forbid-prop-types
+  thumbnail: PropTypes.string, // eslint-disable-line react/forbid-prop-types
+  title: PropTypes.string, // eslint-disable-line react/forbid-prop-types
 };
 
 export default SongItem;

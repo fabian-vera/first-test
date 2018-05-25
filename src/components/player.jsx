@@ -3,12 +3,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AudioPlayer from 'react-h5-audio-player';
 import SongInfo from './songInfo';
+import Loader from './loader';
 
 class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
       apimp: '',
+      showloader: false,
     };
     this.showAudioPlayer = this.showAudioPlayer.bind(this);
     this.fecthService = this.fecthService.bind(this);
@@ -26,13 +28,12 @@ class Player extends Component {
   }
 
   fecthService(link) {
-    this.props.loader();
+    this.setState({ showloader: true });
     const urlToService = `http://localhost:3001/mp3/?url=${link}`;
     fetch(urlToService)
       .then(response => response.json())
       .then((apimp) => {
-        this.setState({ apimp: apimp.url });
-        this.props.loader();
+        this.setState({ apimp: apimp.url, showloader: false });
       });
   }
 
@@ -60,17 +61,16 @@ class Player extends Component {
           titleclickedyoutube={this.props.titleclickedyoutube}
         />
         {this.showAudioPlayer()}
+        <Loader showloader={this.state.showloader} />
       </div>
     );
   }
 }
 
 Player.propTypes = {
-  loader: PropTypes.func.isRequired,
-  thumbclickedyoutube: PropTypes.string.isRequired,
-  urlclickedyoutube: PropTypes.string.isRequired,
-  titleclickedyoutube: PropTypes.string.isRequired,
+  thumbclickedyoutube: PropTypes.string, // eslint-disable-line react/forbid-prop-types
+  urlclickedyoutube: PropTypes.string, // eslint-disable-line react/forbid-prop-types
+  titleclickedyoutube: PropTypes.string, // eslint-disable-line react/forbid-prop-types
 };
 
 export default Player;
-

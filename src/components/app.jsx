@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import SongList from './songList';
 import Player from './player';
+import Loader from './loader';
 
 const API = 'AIzaSyBwLREGuwxqd-boo81CaFeqCqZAclbuK-M';
 const result = 20;
@@ -14,18 +15,18 @@ class AppContainer extends Component {
       urlclickedyoutube: '',
       thumbclickedyoutube: '',
       titleclickedyoutube: '',
+      showloader: false,
     };
 
     this.clickedSearch = this.clickedSearch.bind(this);
     this.clickedSongItem = this.clickedSongItem.bind(this);
     this.handleShowPlayer = this.handleShowPlayer.bind(this);
     this.enterKey = this.enterKey.bind(this);
-    this.loader = this.loader.bind(this);
   }
 
   // Busqueda en Youtube
   clickedSearch() {
-    this.loader();
+    this.setState({ showloader: true });
     const filterText = document.getElementById('search').value;
     const finalURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&part=snippet,id&order=relevance&type=video&videoDuration=medium&maxResults=${result}&q=${filterText}`;
     fetch(finalURL)
@@ -36,8 +37,7 @@ class AppContainer extends Component {
           thumbnail: item.snippet.thumbnails.high.url,
           url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
         }));
-        this.setState({ resultyt });
-        this.loader();
+        this.setState({ resultyt, showloader: false });
       })
       .catch((error) => {
         console.error(error);
@@ -57,15 +57,6 @@ class AppContainer extends Component {
     }
   }
 
-  loader() {
-    const loader = document.getElementById('loader');
-    if (loader.classList.contains('visible')) {
-      loader.classList.remove('visible');
-    } else {
-      loader.classList.add('visible');
-    }
-  }
-
   handleShowPlayer() {
     if (this.state.urlclickedyoutube !== '') {
       return (
@@ -73,7 +64,6 @@ class AppContainer extends Component {
           urlclickedyoutube={this.state.urlclickedyoutube}
           thumbclickedyoutube={this.state.thumbclickedyoutube}
           titleclickedyoutube={this.state.titleclickedyoutube}
-          loader={this.loader}
         />
       );
     }
@@ -97,12 +87,7 @@ class AppContainer extends Component {
           />
           {this.handleShowPlayer()}
         </main>
-        <div id="loader">
-          <div className="center-loader">
-            <i className="fas fa-spinner fa-3x fa-spin" />
-            <span>Loading...</span>
-          </div>
-        </div>
+        <Loader showloader={this.state.showloader} />
       </div>
     );
   }
