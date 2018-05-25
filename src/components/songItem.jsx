@@ -25,11 +25,8 @@ class SongItem extends Component {
 }
 
 SongItem.propTypes = {
-  clickedSongItem: PropTypes.func, // eslint-disable-line react/forbid-prop-types
-  item: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  url: PropTypes.string, // eslint-disable-line react/forbid-prop-types
-  thumbnail: PropTypes.string, // eslint-disable-line react/forbid-prop-types
-  title: PropTypes.string, // eslint-disable-line react/forbid-prop-types
+  clickedSongItem: PropTypes.func.isRequired,
+  item: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default SongItem;

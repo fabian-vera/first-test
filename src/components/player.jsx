@@ -24,7 +24,8 @@ class Player extends Component {
   componentWillUpdate(nextProps) {
     if (nextProps.urlclickedyoutube !== this.props.urlclickedyoutube) {
       this.fecthService(nextProps.urlclickedyoutube);
-      this.pauseSong();
+      const audio = document.getElementsByTagName('audio')[0];
+      audio.pause();
     }
   }
 
@@ -48,11 +49,6 @@ class Player extends Component {
     return '';
   }
 
-  pauseSong() {
-    const audio = document.getElementsByTagName('audio')[0];
-    audio.pause();
-  }
-
   render() {
     return (
       <div className="playerContainer">
@@ -68,9 +64,9 @@ class Player extends Component {
 }
 
 Player.propTypes = {
-  thumbclickedyoutube: PropTypes.string, // eslint-disable-line react/forbid-prop-types
-  urlclickedyoutube: PropTypes.string, // eslint-disable-line react/forbid-prop-types
-  titleclickedyoutube: PropTypes.string, // eslint-disable-line react/forbid-prop-types
+  thumbclickedyoutube: PropTypes.string.isRequired,
+  urlclickedyoutube: PropTypes.string.isRequired,
+  titleclickedyoutube: PropTypes.string.isRequired,
 };
 
 export default Player;
