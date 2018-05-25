@@ -26,10 +26,7 @@ class SongItem extends Component {
 
 SongItem.propTypes = {
   clickedSongItem: PropTypes.func.isRequired,
-  item: PropTypes.arrayOf.isRequired,
-  url: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  item: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default SongItem;

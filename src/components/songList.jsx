@@ -9,7 +9,7 @@ class songList extends Component {
     if (this.props.resultyt) {
       resultItems = this.props.resultyt.map(item => (
         <SongItem
-          key={item.title}
+          key={item.id}
           item={item}
           clickedSongItem={this.props.clickedSongItem}
         />
@@ -25,7 +25,7 @@ class songList extends Component {
 
 songList.propTypes = {
   clickedSongItem: PropTypes.func.isRequired,
-  resultyt: PropTypes.arrayOf.isRequired,
+  resultyt: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default songList;
