@@ -27,13 +27,14 @@ h2 {
     input#search {
         background: $navy;
         padding: 4px;
-        border: 1px #1B262C;
+        border: 1px solid #1B262C !important;
         border-radius: 4px;
         border: 0;
         width: 89%;
         color: $cream;
         &:focus {
             border: 1px solid $orange;
+            outline: 0; 
         }
     }
     button {
@@ -109,7 +110,7 @@ ul.songList {
             }
             .icon-bg {
                 position: absolute;
-                right: 4px;
+                right: 8px;
                 top: 50%;
                 -webkit-transform: translate(0, -50%);
                 transform: translate(0, -50%);
